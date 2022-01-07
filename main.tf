@@ -1,6 +1,6 @@
 resource "aws_lb_target_group" "this" {
   name        = var.name
-  name_prefix = substr(var.name_prefix,0,6)
+  name_prefix = try(substr(var.name_prefix,0,6), null)
   port        = var.port
   protocol    = var.protocol
   vpc_id      = var.vpc_id
